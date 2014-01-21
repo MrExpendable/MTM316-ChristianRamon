@@ -100,53 +100,55 @@
 		{
 			newXmlData = new XML(e.target.data);
 			
+			clearText();
+			
 			var date1:String = newXmlData.forecast.time[0].@day;
 			var day1MaxTemp:String = newXmlData.forecast.time[0].temperature.@max;
 			var day1MinTemp:String = newXmlData.forecast.time[0].temperature.@min;
 			var day1WeatherCode:int = newXmlData.forecast.time[0].symbol.@number;
-			textInfoArray[0].text = "";
+			//textInfoArray[0].text = "";
 			textInfoArray[0].appendText(date1.substring(5,10) + "\nMax temp: " + day1MaxTemp  + "C" + "\nMin temp: " + day1MinTemp + "C");
 			
 			var date2:String = newXmlData.forecast.time[1].@day;
 			var day2MaxTemp:String = newXmlData.forecast.time[1].temperature.@max;
 			var day2MinTemp:String = newXmlData.forecast.time[1].temperature.@min;
 			var day2WeatherCode:int = newXmlData.forecast.time[1].symbol.@number;
-			textInfoArray[1].text = "";
+			//textInfoArray[1].text = "";
 			textInfoArray[1].appendText(date2.substring(5,10) + "\nMax temp: " + day2MaxTemp  + "C" + "\nMin temp: " + day2MinTemp + "C");
 			
 			var date3:String = newXmlData.forecast.time[2].@day;
 			var day3MaxTemp:String = newXmlData.forecast.time[2].temperature.@max;
 			var day3MinTemp:String = newXmlData.forecast.time[2].temperature.@min;
 			var day3WeatherCode:int = newXmlData.forecast.time[2].symbol.@number;
-			textInfoArray[2].text = "";
+			//textInfoArray[2].text = "";
 			textInfoArray[2].appendText(date3.substring(5,10) + "\nMax temp: " + day3MaxTemp  + "C" + "\nMin temp: " + day3MinTemp + "C");
 			
 			var date4:String = newXmlData.forecast.time[3].@day;
 			var day4MaxTemp:String = newXmlData.forecast.time[3].temperature.@max;
 			var day4MinTemp:String = newXmlData.forecast.time[3].temperature.@min;
 			var day4WeatherCode:int = newXmlData.forecast.time[3].symbol.@number;
-			textInfoArray[3].text = "";
+			//textInfoArray[3].text = "";
 			textInfoArray[3].appendText(date4.substring(5,10) + "\nMax temp: " + day4MaxTemp  + "C" + "\nMin temp: " + day4MinTemp + "C");
 			
 			var date5:String = newXmlData.forecast.time[4].@day;
 			var day5MaxTemp:String = newXmlData.forecast.time[4].temperature.@max;
 			var day5MinTemp:String = newXmlData.forecast.time[4].temperature.@min;
 			var day5WeatherCode:int = newXmlData.forecast.time[4].symbol.@number;
-			textInfoArray[4].text = "";
+			//textInfoArray[4].text = "";
 			textInfoArray[4].appendText(date5.substring(5,10) + "\nMax temp: " + day5MaxTemp  + "C" + "\nMin temp: " + day5MinTemp + "C");
 			
 			var date6:String = newXmlData.forecast.time[5].@day;
 			var day6MaxTemp:String = newXmlData.forecast.time[5].temperature.@max;
 			var day6MinTemp:String = newXmlData.forecast.time[5].temperature.@min;
 			var day6WeatherCode:int = newXmlData.forecast.time[5].symbol.@number;
-			textInfoArray[5].text = "";
+			//textInfoArray[5].text = "";
 			textInfoArray[5].appendText(date6.substring(5,10) + "\nMax temp: " + day6MaxTemp  + "C" + "\nMin temp: " + day6MinTemp + "C");
 			
 			var date7:String = newXmlData.forecast.time[6].@day;
 			var day7MaxTemp:String = newXmlData.forecast.time[6].temperature.@max;
 			var day7MinTemp:String = newXmlData.forecast.time[6].temperature.@min;
 			var day7WeatherCode:int = newXmlData.forecast.time[6].symbol.@number;
-			textInfoArray[6].text = "";
+			//textInfoArray[6].text = "";
 			textInfoArray[6].appendText(date7.substring(5,10) + "\nMax temp: " + day7MaxTemp  + "C" + "\nMin temp: " + day7MinTemp + "C");
 			
 			var weatherCodeArray:Array = [day1WeatherCode, day2WeatherCode, day3WeatherCode, day4WeatherCode, day5WeatherCode, day6WeatherCode, day7WeatherCode];
@@ -169,6 +171,7 @@
 			{
 				//thunder
 				weatherClipArray[dayNum] = new tStormRain_mc;//weatherArray[4];
+				weatherClipArray[dayNum].addEventListener(MouseEvent.CLICK, clickHandler);
 				addChild(weatherClipArray[dayNum]);
 				trace("thunder w/ rain");
 			}
@@ -176,6 +179,7 @@
 			{
 				//thunder
 				weatherClipArray[dayNum] = new thunderstorm_mc;//weatherArray[3];
+				weatherClipArray[dayNum].addEventListener(MouseEvent.CLICK, clickHandler);
 				addChild(weatherClipArray[dayNum]);
 				trace("thunder");
 			}
@@ -183,6 +187,7 @@
 			{
 				//rain
 				weatherClipArray[dayNum] = new rainyDay_mc;//weatherArray[2];
+				weatherClipArray[dayNum].addEventListener(MouseEvent.CLICK, clickHandler);
 				addChild(weatherClipArray[dayNum]);
 				trace("rain");
 			}
@@ -190,6 +195,7 @@
 			{
 				//snowy
 				weatherClipArray[dayNum] = new snowyDay_mc;//weatherArray[5];
+				weatherClipArray[dayNum].addEventListener(MouseEvent.CLICK, clickHandler);
 				addChild(weatherClipArray[dayNum]);
 				trace("snow");
 			}
@@ -197,6 +203,7 @@
 			{
 				//sunny
 				weatherClipArray[dayNum] = new sunnyDay_mc;//weatherArray[0];
+				weatherClipArray[dayNum].addEventListener(MouseEvent.CLICK, clickHandler);
 				addChild(weatherClipArray[dayNum]);
 				trace("sun");
 			}
@@ -204,13 +211,24 @@
 			{
 				//cloudy
 				weatherClipArray[dayNum] = new cloudyDay_mc;//weatherArray[1];
+				weatherClipArray[dayNum].addEventListener(MouseEvent.CLICK, clickHandler);
 				addChild(weatherClipArray[dayNum]);
 				trace("cloud");
 			}
 		}
 		
+		public function determineDetailedWeather()
+		{
+			trace("Determining detailed weather for selected day");
+		}
+		
 		public function initializeMoviePositions()
 		{
+			//detailedClip.x = 375;
+//			detailedClip.y = 200;
+//			detailedInfo.x = 375;
+//			detailedInfo.y = 300;
+			
 			weatherClipArray[0].x = 195;
 			weatherClipArray[0].y = 200;
 			textInfoArray[0].x = 150;
@@ -256,13 +274,6 @@
 			dayArray = new Array(today, new Date(2014, 0, 17), new Date(2014, 0, 18), new Date(2014, 0, 19), 
 												 new Date(2014, 0, 20), new Date(2014, 0, 21), new Date(2014, 0, 22), new Date(2014, 0, 23));
 			textInfoArray = new Array(new TextField(), new TextField(), new TextField(), new TextField(), new TextField(), new TextField(), new TextField());
-			
-			for(var i:int = 0; i < weatherClipArray.length; i++)
-			{
-				trace("adding mouse listener to movie clip");
-				weatherClipArray[i].addEventListener(MouseEvent.CLICK, clickHandler);
-				trace("successfully added mouse listener");
-			}
 		}
 
 		public function milestone1_3()
@@ -279,10 +290,26 @@
 		
 		public function clearStage()
 		{
-			for(var i:int = 0; i < 7; i++)
+			for(var i:int = 0; i < weatherClipArray.length; i++)
 			{
 				this.removeChild(weatherClipArray[i]);
 			}
+		}
+		
+		public function clearText()
+		{
+			for(var i:int = 0; i < textInfoArray.length; i++)
+			{
+				textInfoArray[i].text = "";
+			}
+			
+		}
+		
+		public function showDetailedInfo()
+		{
+			clearStage();
+			clearText();
+			determineDetailedWeather();
 		}
 		
 		
@@ -290,7 +317,6 @@
 		function clickHandler(event:MouseEvent) :void
 		{
 			trace("Clearing stage and getting detailed info");
-			clearStage();
 			showDetailedInfo();
 		}
 		
@@ -315,3 +341,11 @@
 		}
 	}
 }
+
+//Old code
+//for(var i:int = 0; i < weatherClipArray.length; i++)
+//{
+//	trace("adding mouse listener to movie clip");
+//	weatherClipArray[i].addEventListener(MouseEvent.CLICK, clickHandler);
+//	trace("successfully added mouse listener");
+//}
