@@ -309,7 +309,18 @@
 		{
 			clearStage();
 			clearText();
-			determineDetailedWeather();
+			
+			var format:TextFormat = new TextFormat();
+			format.size = 72;
+			format.bold = true;
+			var doesntWork:TextField = new TextField();
+			doesntWork.defaultTextFormat = format;
+			doesntWork.text = "DOESN'T WORK";
+			doesntWork.width = 600;
+			doesntWork.x = 125;
+			doesntWork.y = 200;
+			addChild(doesntWork);
+			//determineDetailedWeather();
 		}
 		
 		
