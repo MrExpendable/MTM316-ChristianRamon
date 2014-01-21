@@ -157,7 +157,14 @@
 		
 		public function determineWeather(type:int, dayNum:int)
 		{
-			if(type >= 200 && type <= 232)
+			if(type >= 200 && type <= 202)
+			{
+				//thunder
+				weatherClipArray[dayNum] = new tStormRain_mc;//weatherArray[4];
+				addChild(weatherClipArray[dayNum]);
+				trace("thunder w/ rain");
+			}
+			if(type >= 203 && type <= 232)
 			{
 				//thunder
 				weatherClipArray[dayNum] = new thunderstorm_mc;//weatherArray[3];
@@ -174,7 +181,7 @@
 			else if(type >= 600 && type <= 621)
 			{
 				//snowy
-				weatherClipArray[dayNum] = new snowyDay_mc;//weatherArray[4];
+				weatherClipArray[dayNum] = new snowyDay_mc;//weatherArray[5];
 				addChild(weatherClipArray[dayNum]);
 				trace("snow");
 			}
@@ -236,7 +243,7 @@
 		{
 			today = new Date(2014, 0, 16);
 			
-			weatherArray = new Array(new sunnyDay_mc, new cloudyDay_mc, new rainyDay_mc, new thunderstorm_mc, new snowyDay_mc);
+			weatherArray = new Array(new sunnyDay_mc, new cloudyDay_mc, new rainyDay_mc, new thunderstorm_mc, new tStormRain_mc, new snowyDay_mc);
 			weatherClipArray = new Array(new MovieClip(), new MovieClip(), new MovieClip(), new MovieClip(), new MovieClip(), new MovieClip(), new MovieClip());
 			dayArray = new Array(today, new Date(2014, 0, 17), new Date(2014, 0, 18), new Date(2014, 0, 19), 
 												 new Date(2014, 0, 20), new Date(2014, 0, 21), new Date(2014, 0, 22), new Date(2014, 0, 23));
