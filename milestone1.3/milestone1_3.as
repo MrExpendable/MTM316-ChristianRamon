@@ -4,8 +4,7 @@
 	import flash.net.*;
 	import flash.events.*;
 	import flash.xml.*;
-	import flash.text.TextField;
-	import flash.text.TextFormat;
+	import flash.text.*;
 	
 
 	public class milestone1_3 extends MovieClip
@@ -19,56 +18,68 @@
 		var textInfoArray:Array;
 		var daysOfWeek:Array = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 		var weatherClipArray:Array;
+		var detailedClip:MovieClip;
+		var detailedInfo:TextField;
 		
 		var today:Date;
 
 		public function processInitXml(e: Event):void
 		{
 			initXmlData = new XML(e.target.data);
-			//var format:TextFormat = new TextFormat();
-			//format.align = TextFormatAlign.CENTER;
+			var format:TextFormat = new TextFormat();
+			format.align = TextFormatAlign.CENTER;
+			with(format)
+			{
+				bold = true;
+			}
 			
 			var date1:String = initXmlData.forecast.time[0].@day;
 			var day1MaxTemp:String = initXmlData.forecast.time[0].temperature.@max;
 			var day1MinTemp:String = initXmlData.forecast.time[0].temperature.@min;
 			var day1WeatherCode:int = initXmlData.forecast.time[0].symbol.@number;
+			textInfoArray[0].defaultTextFormat = format;
 			textInfoArray[0].appendText(date1.substring(5,10) + "\nMax temp: " + day1MaxTemp  + "C" + "\nMin temp: " + day1MinTemp + "C");
-			//textInfoArray[0].defaultTextFormat = format;
 			
 			var date2:String = initXmlData.forecast.time[1].@day;
 			var day2MaxTemp:String = initXmlData.forecast.time[1].temperature.@max;
 			var day2MinTemp:String = initXmlData.forecast.time[1].temperature.@min;
 			var day2WeatherCode:int = initXmlData.forecast.time[1].symbol.@number;
+			textInfoArray[1].defaultTextFormat = format;
 			textInfoArray[1].appendText(date2.substring(5,10) + "\nMax temp: " + day2MaxTemp  + "C" + "\nMin temp: " + day2MinTemp + "C");
 			
 			var date3:String = initXmlData.forecast.time[2].@day;
 			var day3MaxTemp:String = initXmlData.forecast.time[2].temperature.@max;
 			var day3MinTemp:String = initXmlData.forecast.time[2].temperature.@min;
 			var day3WeatherCode:int = initXmlData.forecast.time[2].symbol.@number;
+			textInfoArray[2].defaultTextFormat = format;
 			textInfoArray[2].appendText(date3.substring(5,10) + "\nMax temp: " + day3MaxTemp  + "C" + "\nMin temp: " + day3MinTemp + "C");
 			
 			var date4:String = initXmlData.forecast.time[3].@day;
 			var day4MaxTemp:String = initXmlData.forecast.time[3].temperature.@max;
 			var day4MinTemp:String = initXmlData.forecast.time[3].temperature.@min;
 			var day4WeatherCode:int = initXmlData.forecast.time[3].symbol.@number;
+			textInfoArray[3].defaultTextFormat = format;
 			textInfoArray[3].appendText(date4.substring(5,10) + "\nMax temp: " + day4MaxTemp  + "C" + "\nMin temp: " + day4MinTemp + "C");
 			
 			var date5:String = initXmlData.forecast.time[4].@day;
 			var day5MaxTemp:String = initXmlData.forecast.time[4].temperature.@max;
 			var day5MinTemp:String = initXmlData.forecast.time[4].temperature.@min;
 			var day5WeatherCode:int = initXmlData.forecast.time[4].symbol.@number;
+			textInfoArray[4].defaultTextFormat = format;
 			textInfoArray[4].appendText(date5.substring(5,10) + "\nMax temp: " + day5MaxTemp  + "C" + "\nMin temp: " + day5MinTemp + "C");
 			
 			var date6:String = initXmlData.forecast.time[5].@day;
 			var day6MaxTemp:String = initXmlData.forecast.time[5].temperature.@max;
 			var day6MinTemp:String = initXmlData.forecast.time[5].temperature.@min;
 			var day6WeatherCode:int = initXmlData.forecast.time[5].symbol.@number;
+			textInfoArray[5].defaultTextFormat = format;
 			textInfoArray[5].appendText(date6.substring(5,10) + "\nMax temp: " + day6MaxTemp  + "C" + "\nMin temp: " + day6MinTemp + "C");
 			
 			var date7:String = initXmlData.forecast.time[6].@day;
 			var day7MaxTemp:String = initXmlData.forecast.time[6].temperature.@max;
 			var day7MinTemp:String = initXmlData.forecast.time[6].temperature.@min;
 			var day7WeatherCode:int = initXmlData.forecast.time[6].symbol.@number;
+			textInfoArray[6].defaultTextFormat = format;
 			textInfoArray[6].appendText(date7.substring(5,10) + "\nMax temp: " + day7MaxTemp  + "C" + "\nMin temp: " + day7MinTemp + "C");
 			
 			var weatherCodeArray:Array = [day1WeatherCode, day2WeatherCode, day3WeatherCode, day4WeatherCode, day5WeatherCode, day6WeatherCode, day7WeatherCode];
@@ -88,8 +99,6 @@
 		public function processXml(e: Event):void
 		{
 			newXmlData = new XML(e.target.data);
-			//var format:TextFormat = new TextFormat();
-			//format.align = TextFormatAlign.CENTER;
 			
 			var date1:String = newXmlData.forecast.time[0].@day;
 			var day1MaxTemp:String = newXmlData.forecast.time[0].temperature.@max;
@@ -97,7 +106,6 @@
 			var day1WeatherCode:int = newXmlData.forecast.time[0].symbol.@number;
 			textInfoArray[0].text = "";
 			textInfoArray[0].appendText(date1.substring(5,10) + "\nMax temp: " + day1MaxTemp  + "C" + "\nMin temp: " + day1MinTemp + "C");
-			//textInfoArray[0].defaultTextFormat = format;
 			
 			var date2:String = newXmlData.forecast.time[1].@day;
 			var day2MaxTemp:String = newXmlData.forecast.time[1].temperature.@max;
@@ -249,10 +257,10 @@
 												 new Date(2014, 0, 20), new Date(2014, 0, 21), new Date(2014, 0, 22), new Date(2014, 0, 23));
 			textInfoArray = new Array(new TextField(), new TextField(), new TextField(), new TextField(), new TextField(), new TextField(), new TextField());
 			
-			for each(var m:MovieClip in weatherClipArray)
+			for(var i:int = 0; i < weatherClipArray.length; i++)
 			{
-				trace("adding mouse listeners to movie clip");
-				m.addEventListener(MouseEvent.MOUSE_DOWN, mouseListener);
+				trace("adding mouse listener to movie clip");
+				weatherClipArray[i].addEventListener(MouseEvent.CLICK, clickHandler);
 				trace("successfully added mouse listener");
 			}
 		}
@@ -279,9 +287,11 @@
 		
 		
 		//Movie clip mouse listener
-		function mouseListener(event:MouseEvent)
+		function clickHandler(event:MouseEvent) :void
 		{
-			trace("I was clicked on");
+			trace("Clearing stage and getting detailed info");
+			clearStage();
+			showDetailedInfo();
 		}
 		
 		//Text input listener
