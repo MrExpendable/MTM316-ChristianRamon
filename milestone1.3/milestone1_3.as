@@ -312,11 +312,11 @@
 			clearText();
 			
 			var format:TextFormat = new TextFormat();
-			format.size = 72;
+			format.size = 36;
 			format.bold = true;
 			var doesntWork:TextField = new TextField();
 			doesntWork.defaultTextFormat = format;
-			doesntWork.text = "DOESN'T WORK";
+			doesntWork.text = "This feature is currently unavailable..";
 			doesntWork.width = 600;
 			doesntWork.x = 125;
 			doesntWork.y = 200;
