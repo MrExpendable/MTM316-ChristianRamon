@@ -28,10 +28,11 @@
 			initXmlData = new XML(e.target.data);
 			var format:TextFormat = new TextFormat();
 			format.align = TextFormatAlign.CENTER;
-			with(format)
-			{
-				bold = true;
-			}
+			format.size = 12;
+			//with(format)
+//			{
+//				bold = true;
+//			}
 			
 			var date1:String = initXmlData.forecast.time[0].@day;
 			var day1MaxTemp:String = initXmlData.forecast.time[0].temperature.@max;
@@ -230,24 +231,24 @@
 //			detailedInfo.y = 300;
 			
 			weatherClipArray[0].x = 195;
-			weatherClipArray[0].y = 200;
+			weatherClipArray[0].y = 300;
 			textInfoArray[0].x = 150;
-			textInfoArray[0].y = 200;
+			textInfoArray[0].y = 300;
 			
 			weatherClipArray[1].x = 345;
-			weatherClipArray[1].y = 200;
+			weatherClipArray[1].y = 300;
 			textInfoArray[1].x = 300;
-			textInfoArray[1].y = 200;
+			textInfoArray[1].y = 300;
 			
 			weatherClipArray[2].x = 495;
-			weatherClipArray[2].y = 200;
+			weatherClipArray[2].y = 300;
 			textInfoArray[2].x = 450;
-			textInfoArray[2].y = 200;
+			textInfoArray[2].y = 300;
 			
 			weatherClipArray[3].x = 645;
-			weatherClipArray[3].y = 200;
+			weatherClipArray[3].y = 300;
 			textInfoArray[3].x = 600;
-			textInfoArray[3].y = 200;
+			textInfoArray[3].y = 300;
 			
 			weatherClipArray[4].x = 270;
 			weatherClipArray[4].y = 500;
